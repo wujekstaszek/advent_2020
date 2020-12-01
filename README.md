@@ -1,1 +1,2 @@
-"Advent of Code 2020 \n by Aleksander Morgaàa" 
+Advent of Code 2020 
+by Aleksander Morga≈Ça
