@@ -1,5 +1,3 @@
-import re
-
 def slope(list_input,mov_ver,mov_hor):
 	x = 0
 	y = 0
@@ -19,10 +17,6 @@ def slope(list_input,mov_ver,mov_hor):
 
 with open("input.txt") as input:
 	list_input = list(input)
-
-	print(list_input)
-	mov_vertical = 3
-	mov_horizontal = 1
 	moves = [[1,1],[3,1],[5,1],[7,1],[1,2]]
 	print(f'PART1: {slope(list_input,3,1)}')
 	result = 1 
