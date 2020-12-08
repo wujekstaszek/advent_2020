@@ -8,7 +8,7 @@ def check_valid(passport):
 	("hgt:([0-9]{2,3}[a-z]{2})\s",[str(x)+"cm" for x in range(150,194)]+[str(x)+"in" for x in range(59,77)]),\
 	("hcl:(\#[0-9a-f]{6})\s",0),\
 	("ecl:(amb|blu|brn|gry|grn|hzl|oth)\s",0),\
-	("pid:[0-9]{1,9}\s",0)]
+	("pid:[0-9]{9}\s",0)]
 	for word in to_find:
 		found = re.search(word[0],passport)
 		if found == None:
