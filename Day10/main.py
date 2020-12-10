@@ -15,6 +15,9 @@ print (counter[0]*counter[2])
 
 
 
+
+#part2
+
 def find_a_ways(data,x=0):
 	for index in range(len(data)-1):
 		i = index + 1
@@ -32,6 +35,6 @@ def find_a_ways(data,x=0):
 data.insert(0,0)
 data = [[x,0] for x in data]
 data[0][1] = 1 
-print (find_a_ways(data))
+print (find_a_ways(data)[len(data)-2][1])
 
 
