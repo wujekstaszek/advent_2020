@@ -1,35 +1,20 @@
+import itertools
+import math
 
 
 
 
-if __name__ == "__main__":
-
-
-#PART 1 & 2
-
-
-	with open("input.txt") as input:
-		input = [int(x) for x in list(input)]
-		input.sort()
-		length = len(input)
-		for x in range(length):
-			a = input[x]
-			for y in range(x,length):
-				b = input[y]
-				absum = a + b
-				if(absum < 2020):
-					for z in range(y,length):
-						c = input[length-z-1]
-						abcsum = absum + c
-						if(abcsum == 2020):
-							print(f"#PART2\n{a*b*c}")
-						if(abcsum < 2020):
-							break
-
-				if(absum == 2020):
-					print(f"#PART1\n{a*b}")
+def find_numbers_summing_to(how_many,to_what,data):
+	permutations = list(itertools.permutations(data,how_many))
+	result = list(map(lambda x: int(sum(x)),permutations))
+	result_index = result.index(to_what)
+	return (math.prod(permutations[result_index]))
 
 
 
-
-
+data = open("input.txt").read().splitlines()
+data = list(map(int,data))
+how_many = [2,3]
+to = [2020,2020]
+for number,to_what in zip(how_many,to):
+	print(f"Result for {number} numbers while looking for numbers summing to {to_what}: {find_numbers_summing_to(number,to_what,data)}")
