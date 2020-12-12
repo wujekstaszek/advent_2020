@@ -33,8 +33,6 @@ def count_first_seats(data,row,column,x_max,y_max):
 		found = 0
 		while found==0:
 			found = 0
-			if row == 1 and column ==0:
-				print (x,y)
 			if 0 <= y <y_max and 0 <= x <x_max:
 				if data[y][x] == "#":
 					counter += 1
@@ -46,8 +44,6 @@ def count_first_seats(data,row,column,x_max,y_max):
 					x += possibility[1]
 			else: 
 				found = 1
-			if row == 1 and column ==0:
-				print(counter)
 	return counter
 
 
@@ -83,5 +79,4 @@ with open ("input.txt") as input_file:
 				new_row.append(checked)
 			new_data.append(new_row)
 		data = [[x for x in y] for y in new_data]
-		print(*data,'\n',sep="\n")
 	print(sum([x.count('#') for x in data]))
