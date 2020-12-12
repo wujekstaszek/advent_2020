@@ -1,33 +1,31 @@
 import re
 
-def check_password(password_line):
-	regex_filter = "([0-9]+)-([0-9]+) (.): (.*)"
-	x = re.match(regex_filter,str(password_line))
-	bot = int(x[1])
-	top = int(x[2])
-	letter = x[3]
-	password = x[4]
-	count = password.count(letter)
-	if bot<=count<=top:
-		return 1
-	return 0
+class password:
+	def __init__(self,line):
+		regex_filter = "([0-9]+)-([0-9]+) (.): (.*)"
+		x = re.match(regex_filter,str(line))
+		self.bot = int(x[1])
+		self.top = int(x[2])
+		self.letter = x[3]
+		self.password = x[4]
 
-def new_check_password(password_line):
-	regex_filter = "([0-9]+)-([0-9]+) (.): (.*)"
-	x = re.match(regex_filter,str(password_line))
-	bot = int(x[1])
-	top = int(x[2])
-	letter = x[3]
-	password = x[4]
-	if (password[bot-1] == letter) ^ (password[top-1] == letter): 
-		return 1
-	return 0
+	def check_password(self):
+		count = self.password.count(self.letter)
+		if self.bot<=count<=self.top:
+			return 1
+		return 0
+
+	def new_check_password(self):
+		if (self.password[self.bot-1] == self.letter) ^ (self.password[self.top-1] == self.letter): 
+			return 1
+		return 0
 
 
 if __name__ == "__main__":
 	with open("input.txt") as input_data:
 		data = input_data.read().splitlines()
-		checked_passwords_part1 = sum(list(map(check_password,data)))
-		checked_passwords_part2 = sum(list(map(new_check_password,data)))
+		all_paswords = list(map(password,data))
+		checked_passwords_part1 = sum(list(map(lambda x: x.check_password(),all_paswords)))
+		checked_passwords_part2 = sum(list(map(lambda x: x.new_check_password(),all_paswords)))
 		print(checked_passwords_part1)
 		print(checked_passwords_part2)
