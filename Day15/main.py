@@ -1,0 +1,17 @@
+
+
+
+data = [0,14,6,20,1,4,0]
+data_dic = {0:1,14:2,6:3,20:4,1:5,4:6}
+
+
+
+for turn in range(1,30000010):
+	num = data[-1]
+	if num in data_dic:
+		data.append(turn + 6 - data_dic[num])
+		data_dic[num] = turn + 6
+	else:
+		data.append(0)
+		data_dic[num] = turn + 6 
+print(data[30000000-1])
